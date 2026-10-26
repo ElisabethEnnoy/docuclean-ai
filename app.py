@@ -4,8 +4,9 @@ import pypdf
 
 st.set_page_config(page_title="DocuClean AI - Analiză Contracte", page_icon="📄", layout="centered")
 
-# === https://docuclean.lemonsqueezy.com/checkout/buy/76297748-b6f0-4c5c-b0e0-dbe3560a302b ===
-LEMON_SQUEEZY_LINK = https://docuclean.lemonsqueezy.com/checkout/buy/76297748-b6f0-4c5c-b0e0-dbe3560a302b
+# === PUNEM LINK-UL TĂU REAL DE LA LEMON SQUEEZY AICI ===
+LEMON_SQUEEZY_LINK = "https://docuclean.lemonsqueezy.com/checkout/buy/76297748-b6f0-4c5c-b0e0-dbe3560a302b"  
+
 st.title("📄 DocuClean AI")
 st.subheader("Analizează orice contract în 10 secunde. Descoperă riscurile ascunse.")
 
