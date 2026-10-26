@@ -7,10 +7,8 @@ st.set_page_config(page_title="DocuClean AI - Analiză Contracte", page_icon="�
 st.title("📄 DocuClean AI")
 st.subheader("Analizează orice contract în 10 secunde. Descoperă riscurile ascunse.")
 
-# Introducere API Key (sau preluare automată din mediu securizat)
-api_key = st.secrets.get("OPENAI_API_KEY", None)
-if not api_key:
-    api_key = st.sidebar.text_input("Introdu OpenAI API Key:", type="password")
+# Căsuță securizată direct în pagină pentru cheia OpenAI
+api_key = st.text_input("Introdu OpenAI API Key (începe cu sk-):", type="password")
 
 uploaded_file = st.file_uploader("Încarcă contractul în format PDF", type=["pdf"])
 
@@ -32,7 +30,7 @@ def analyze_contract(text, api_key):
     3. ✅ OBLIGAȚII CHEIE (ce trebuie să facă utilizatorul concret).
 
     Text Contract:
-    {text[:12000]}  # limitare text pentru consum eficient de jetoane
+    {text[:12000]}
     """
     
     response = client.chat.completions.create(
@@ -44,7 +42,7 @@ def analyze_contract(text, api_key):
 
 if uploaded_file is not None:
     if not api_key:
-        st.error("Te rugăm să introduci o cheie API pentru a continua.")
+        st.warning("⚠️ Te rugăm să introduci cheia OpenAI în căsuța de sus pentru a putea face analiza.")
     else:
         with st.spinner("Se extrage textul și se analizează clauzele..."):
             contract_text = extract_text_from_pdf(uploaded_file)
@@ -56,5 +54,4 @@ if uploaded_file is not None:
                 st.markdown("---")
                 st.markdown(report)
                 
-                # Opțiune de descărcare raport
                 st.download_button("Descarcă Raportul (TXT)", report, file_name="Raport_DocuClean.txt")
