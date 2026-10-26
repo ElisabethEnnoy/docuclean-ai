@@ -4,14 +4,14 @@ import pypdf
 
 st.set_page_config(page_title="DocuClean AI - Analiză Contracte", page_icon="📄", layout="centered")
 
-# === https://docuclean.lemonsqueezy.com/checkout/buy/76297748-b6f0-4c5c-b0e0-dbe3560a302b ===
+# === LINK-UL TĂU LEMON SQUEEZY === 
 LEMON_SQUEEZY_LINK = https://docuclean.lemonsqueezy.com/checkout/buy/76297748-b6f0-4c5c-b0e0-dbe3560a302b
 
 st.title("📄 DocuClean AI")
 st.subheader("Analizează orice contract în 10 secunde. Descoperă riscurile ascunse.")
 
 # Secțiune Abonament
-st.info("💡 **Acces Nelimitat:** Abonează-te la **DocuClean Pro (19€/lună)** pentru a analiza contracte instant fără griji.")
+st.info("💡 **Acces Nelimitat:** Abonează-te la **DocuClean Pro (19€/lună)** pentru a analiza contracte instant.")
 st.markdown(f"[👉 **Obține Acces Pro pe Lemon Squeezy**]({LEMON_SQUEEZY_LINK})", unsafe_allow_html=True)
 
 st.markdown("---")
@@ -26,7 +26,7 @@ def extract_text_from_pdf(pdf_file):
     return text
 
 def analyze_contract(text):
-    # Folosește cheia secretă configurată în Streamlit Cloud
+    # Folosește cheia din Streamlit Secrets în mod automat
     client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     
     prompt = f"""
